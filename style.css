@@ -1,0 +1,60 @@
+body {
+	padding: 0px;
+	margin: 0px;
+	font-family: sans-serif;
+}
+
+.pageWrapper {
+	padding: 100px 0px;
+}
+
+.formWrapper,
+.resultWrapper {
+	border: 0px solid #9199a1;
+	padding: 10px;
+	max-width: 800px;
+	margin: 10px auto 0px;
+}
+
+.formWrapper h1 {
+	text-align: center;
+}
+
+.inputWrapper {
+	border: 1px solid #9199a1;
+	max-width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	overflow: hidden;
+	}
+
+.inputWrapper input[type=text] {
+	padding: 20px;
+	margin-right: 73px;
+	width: 100%;
+	outline: none;
+	font-size: 16px;
+	border: 0px;
+	}
+
+.inputWrapper input[type=submit] {
+	border: 0px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 16px;
+	padding: 21px 25px;
+}
+
+.isPalindrome,
+.longestPalindrome,
+.minimumCuts {
+	margin-bottom: 10px;
+}
+
+.isPalindrome span,
+.longestPalindrome span,
+.minimumCuts span {
+	font-weight: 700;
+}

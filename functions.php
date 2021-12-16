@@ -34,7 +34,6 @@ function getAllSubStrings($str){
 	return array_unique(array_map("strtolower", $allSubStr));
 }
 
-
 function longestPalindrome($str) {
 	/*
 	 * check if the string is a palindrome itself
