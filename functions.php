@@ -4,6 +4,13 @@ function isPalindrome($str) {
 		return false;
 	}
 
+	// this is the simplest way to do it with PHP
+	return strrev($str) == $str;
+
+	// if there is no PHP function that will reverse the string 
+	// I'll be using this long method
+	
+	/*
 	$strCount = strlen($str);
 	$midStrCount = round($strCount / 2);
 	for($a = 0; $a < $midStrCount; $a++) {
@@ -13,6 +20,7 @@ function isPalindrome($str) {
 	}
 
 	return true;
+	*/
 }
 
 function getAllSubStrings($str){
@@ -26,12 +34,10 @@ function getAllSubStrings($str){
 		$subStr[] = substr($str, 0, $i);
 	}
 
-	// get the subsctring of the substring
+	// get the substring of the substring
 	$subStrOfSubStr = getAllSubStrings(substr($str, 1));
 	$allSubStr = array_merge($subStr, $subStrOfSubStr);
 
-	// get the unique string from the regardless their cases.
-	// return array_unique(array_map("strtolower", $allSubStr));
 	return $allSubStr;
 }
 
@@ -66,17 +72,22 @@ function longestPalindrome($str) {
 
 function palindromeCuts($str) {
 	static $cuts = [];
-
 	if(!$str) {
 		return 0;
 	}
 
+	// get the longest palindrome substring first
 	$long = longestPalindrome($str);
 	$cuts[] = $long;
+
+	// split the given string by the longest palindrome substring (using explode() PHP function), 
+	// remove the empty strings (using array_filter() PHP function) and
+	// rerun the palindromeCuts function to check the remaining substrings
 	$remaining = array_filter(explode($long, $str));
 	foreach($remaining as $val) {
 		palindromeCuts($val);
 	}
 
+	// return all the palindromic substrings 
 	return $cuts;
 }
