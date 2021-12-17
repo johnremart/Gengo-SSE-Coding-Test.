@@ -51,6 +51,7 @@ body {
 .longestPalindrome,
 .minimumCuts {
 	margin-bottom: 10px;
+	text-align: center;
 }
 
 .isPalindrome span,

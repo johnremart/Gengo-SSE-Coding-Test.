@@ -31,7 +31,8 @@ function getAllSubStrings($str){
 	$allSubStr = array_merge($subStr, $subStrOfSubStr);
 
 	// get the unique string from the regardless their cases.
-	return array_unique(array_map("strtolower", $allSubStr));
+	// return array_unique(array_map("strtolower", $allSubStr));
+	return $allSubStr;
 }
 
 function longestPalindrome($str) {
@@ -48,9 +49,9 @@ function longestPalindrome($str) {
 	// if the string is not palindrome then get all its substrings
 	$arr = getAllSubStrings($str);
 
-	// sort array by character length
-	usort($arr, function($a, $b) {
-		return strlen($b) - strlen($a);
+	// sort array by character length descending
+	usort($arr, function($str1, $str2) {
+		return strlen($str2) - strlen($str1);
 	});
 
 	for($a = 0; $a < count($arr); $a++) {
@@ -60,4 +61,22 @@ function longestPalindrome($str) {
 	}
 
 	return "";
+}
+
+
+function palindromeCuts($str) {
+	static $cuts = [];
+
+	if(!$str) {
+		return 0;
+	}
+
+	$long = longestPalindrome($str);
+	$cuts[] = $long;
+	$remaining = array_filter(explode($long, $str));
+	foreach($remaining as $val) {
+		palindromeCuts($val);
+	}
+
+	return $cuts;
 }

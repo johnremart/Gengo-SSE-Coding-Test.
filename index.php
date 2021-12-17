@@ -32,10 +32,11 @@ if($_POST['submit']) {
 			<?php
 			if($testStr) {
 				$isPalindromeRes = isPalindrome($testStr);
+				$cuts = palindromeCuts($testStr);
 				?>
 				<div class="isPalindrome"><span><?php echo $testStr; ?></span> is <?php echo (!$isPalindromeRes ? "NOT" : ""); ?> a PALINDROME string.</div>
-				<div class="longestPalindrome">Longest palindrom substring is <b><?php echo longestPalindrome($testStr); ?></b></div>
-				<div class="minimumCuts">Longest palindrom substring is <b><?php echo longestPalindrome($testStr); ?></b></div>
+				<div class="longestPalindrome">Longest palindrome substring is <b><?php echo longestPalindrome($testStr); ?></b></div>
+				<div class="minimumCuts">The minimum number of cuts is <b><?php echo (count($cuts) - 1); ?></b> <br>(<?php echo implode(' | ', $cuts); ?>)</div>
 				<?php
 			}
 			?>
